@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div id="img1">
+        <img src="https://sso.masaischool.com/brand_dark.svg" alt="">
+    </div>
+
+    <div id="formdiv">
+        <h2>Log In</h2>
+        <form action="" id="form">
+        <p>Email</p>
+        <input type="email" id="email" placeholder="Enter your email">
+        <p>Password</p>
+        <input type="text" id="password" placeholder="Enter password">
+        <input type="submit" id="submit">
+        
+    </form>
+   </div>
+   <script>
+      var form= document.querySelector("form")
+       var userdata=JSON.parse(localStorage.getItem("information"))
+
+    //    console.log(userdata)
+
+       form.addEventListener("submit",check)
+     
+       function check(){
+           event.preventDefault()
+
+           var data={
+               email:document.querySelector("#email").value,
+               password:document.querySelector("#password").value
+           }
+           if(data.email=='' || data.password=='')
+           {
+                alert("Please fill required credential")
+           }
+           else
+           {
+                var a= userdata.map(function(elem){
+                    if(elem.Email==data.email && elem.Password==data.password)
+                    {
+                        alert("Signup Successfull")
+                    }
+                        else
+                        {
+                            alert("Username or Password is incorrect")
+                        }
+                    })
+             
+           }
+ }
+
+
+      
+   
+   </script>
+    
+</body>
+</html>

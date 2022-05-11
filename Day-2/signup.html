@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <div id="img1">
+        <img src="https://sso.masaischool.com/brand_dark.svg" alt="">
+    </div>
+
+    <div id="formdiv">
+
+        <h2>Sign Up</h2>
+        <form>
+            
+        <p>Email</p>
+        <input type="email" id="email" placeholder="Enter your email">
+        <p>Phone Number</p>
+        <input type="text" id="phone" placeholder="Enter phone Number">
+        <p>Password</p>
+        <input type="text" id="password" placeholder="Enter password">
+        <input type="submit" id="submit">
+        
+    </form>
+   </div>
+   <script>
+       document.querySelector("form").addEventListener("submit",fun)
+
+       var fdata=JSON.parse(localStorage.getItem("information")) || [];
+       function fun(){
+           event.preventDefault()
+
+           var data={
+             Email:document.querySelector("#email").value,
+             Phone:document.querySelector("#phone").value,
+             Password:document.querySelector("#password").value
+           }
+
+           if(data.Email=='' || data.Phone=='' || data.Password=='')
+           {
+                alert("Please fill required credential")
+           }
+           else
+           {
+               fdata.push(data)
+               localStorage.setItem("information",JSON.stringify(fdata))
+               window.location.href="login.html"
+           }
+
+       }
+   
+   </script>
+    
+</body>
+</html>
